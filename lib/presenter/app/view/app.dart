@@ -7,7 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:vinyla/config/config.dart';
-import 'package:vinyla/presenter/presenter.dart';
+import 'package:vinyla/presenter/app/application.dart';
 
 class App extends StatefulWidget {
   const App({
