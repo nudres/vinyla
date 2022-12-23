@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:vinyla/config/config.dart';
 import 'package:vinyla/config/l10n/l10n.dart';
+import 'package:vinyla/presenter/app/route/app_route.dart';
 
 import '../bloc/login_cubit.dart';
 
@@ -28,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: BlocConsumer<LoginCubit, LoginState>(
         listener: (BuildContext context, LoginState state) {
-          // TODO: ADD navigation
+          if (state is SuccessLogin) _navigateToHome();
         },
         builder: (context, state) => SingleChildScrollView(
           child: Stack(
@@ -134,5 +136,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _pressLogin() {
     _bloc.loginByCredential(_emailController.text, _passwordController.text);
+  }
+
+  void _navigateToHome() {
+    context.pushNamed(AppRoute.allVinyl);
   }
 }
