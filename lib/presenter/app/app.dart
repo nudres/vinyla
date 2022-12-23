@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:vinyla/config/config.dart';
 import 'package:vinyla/presenter/presenter.dart';
@@ -50,6 +51,10 @@ class _AppState extends State<App> {
                     themeMode: state.effectiveThemeMode,
                     theme: themeProvider.light(),
                     darkTheme: themeProvider.dark(),
+                    routerConfig: GoRouter(
+                      routes: AppRoute.prepareRoutes(widget.di),
+                      initialLocation: AppRoute.initial,
+                    ),
                   );
                 },
               ),
