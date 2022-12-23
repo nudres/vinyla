@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import 'config/bootstrap.dart';
+import 'package:vinyla/config/bootstrap.dart';
+import 'package:vinyla/presenter/presenter.dart';
 
 void main() {
   bootstrap((GetIt diContainer) async {
-    return Container();
+    return App(
+      di: diContainer,
+    );
   });
 }
