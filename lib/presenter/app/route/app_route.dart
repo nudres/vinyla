@@ -15,7 +15,11 @@ class AppRoute {
   static const allVinyl = 'allVinyl';
   static const myLibrary = 'myLibrary';
   static const myProfile = 'myProfile';
+
   static const _loginPathPart = 'login';
+  static const _vinylPathPart = 'vinyl';
+  static const _libraryPathPart = 'library';
+  static const _profilePathPart = 'profile';
 
   static List<RouteBase> prepareRoutes(GetIt di) {
     return [
@@ -24,11 +28,50 @@ class AppRoute {
         redirect: (_, __) => '/$_loginPathPart',
       ),
       GoRoute(
-        name: _loginPathPart,
+        name: authorization,
         path: '/$_loginPathPart',
-        builder: (context, state) => BlocProvider<LoginCubit>(
+        builder: (_, __) => BlocProvider<LoginCubit>(
           create: (context) => LoginCubit(di<LoginCredentialUseCase>()),
           child: const LoginScreen(),
+        ),
+      ),
+      GoRoute(
+        name: allVinyl,
+        path: '/$_vinylPathPart',
+        pageBuilder: (_, GoRouterState state) => FadeTransitionPage(
+          key: state.pageKey,
+          child: HomeScreen(
+            selectedTab: HomeTab.vinyls,
+            child: Container(
+              color: Colors.red,
+            ),
+          ),
+        ),
+      ),
+      GoRoute(
+        name: myLibrary,
+        path: '/$_libraryPathPart',
+        pageBuilder: (_, GoRouterState state) => FadeTransitionPage(
+          key: state.pageKey,
+          child: HomeScreen(
+            selectedTab: HomeTab.library,
+            child: Container(
+              color: Colors.green,
+            ),
+          ),
+        ),
+      ),
+      GoRoute(
+        name: myProfile,
+        path: '/$_profilePathPart',
+        pageBuilder: (_, GoRouterState state) => FadeTransitionPage(
+          key: state.pageKey,
+          child: HomeScreen(
+            selectedTab: HomeTab.profile,
+            child: Container(
+              color: Colors.yellow,
+            ),
+          ),
         ),
       ),
     ];
