@@ -12,6 +12,7 @@ Future<void> bootstrap(FutureOr<Widget> Function(GetIt diContainer) builder) asy
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp();
 
       final diContainer = await configureDependencies();
       return runApp(await builder(diContainer));

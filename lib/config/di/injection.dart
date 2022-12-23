@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,4 +13,10 @@ Future<GetIt> configureDependencies({String environment = Environment.dev}) asyn
 }
 
 @module
-abstract class RegisterModule {}
+abstract class RegisterModule {
+  @Singleton()
+  FirebaseFirestore database() => FirebaseFirestore.instance;
+
+  @Singleton()
+  FirebaseAuth auth() => FirebaseAuth.instance;
+}
