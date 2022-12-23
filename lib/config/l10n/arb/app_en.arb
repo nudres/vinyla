@@ -1,0 +1,38 @@
+{
+  "@@author": "serdun",
+  "app_name": "Vinyla",
+  "locale": "en",
+
+  "locale_default": "Default",
+  "@locale_default": {
+  },
+
+  "themeMode_system": "System",
+  "themeMode_light": "Light",
+  "themeMode_dark": "Dark",
+
+  "tab_title_vinyls": "Vinyls",
+  "tab_title_my_library": "My library",
+  "tab_title_profile": "Profile",
+
+  "auth_authorization": "Authorization",
+  "auth_login_by_credential": "Login by credential",
+  "auth_login_by_phone": "Login by phone",
+  "auth_sign_in": "Sign in",
+  "auth_hint_password": "Password",
+  "auth_hint_email": "Email",
+  "auth_hint_phone": "Phone",
+  "auth_hint_code": "Code",
+  "auth_title_verify": "Verify",
+  "auth_title_verify_cancel": "Cancel",
+  "auth_failure_timeout_connection": "A connection error occurred, check the availability of the Internet",
+  "auth_failure_too_many_login_attempts": "Too many failed attempts, try logging in later",
+  "auth_failure_phone_unknown": "An authorization error occurred, please write to support.",
+
+  "common_ok": "Ok",
+  "common_exception_title": "Ops, something happened",
+  "common_unknown_exception": "We are very sorry, but an error occurred, please try again later."
+
+
+}
+
