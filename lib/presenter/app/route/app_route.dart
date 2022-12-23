@@ -11,6 +11,10 @@ import 'package:vinyla/presenter/features/features.dart';
 class AppRoute {
   static const initial = '/';
 
+  static const authorization = 'authorization';
+  static const allVinyl = 'allVinyl';
+  static const myLibrary = 'myLibrary';
+  static const myProfile = 'myProfile';
   static const _loginPathPart = 'login';
 
   static List<RouteBase> prepareRoutes(GetIt di) {
