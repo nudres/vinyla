@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 
 import 'package:meta/meta.dart';
-
-import 'package:vinyla/domain/usecase/auth/login_credential/login_credential.dart';
+import 'package:vinyla/domain/domain.dart';
 
 part 'login_state.dart';
 
@@ -15,8 +14,10 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       await _useCase.execute(email, password);
       emit(SuccessLogin());
+    } on BaseException catch (e) {
+      emit(FailureTypeLogin(e.type));
     } catch (e) {
-      emit(FailureLogin());
+      emit(FailureMessageLogin(e.toString()));
     }
   }
 }

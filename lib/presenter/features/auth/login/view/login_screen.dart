@@ -5,7 +5,11 @@ import 'package:go_router/go_router.dart';
 
 import 'package:vinyla/config/config.dart';
 import 'package:vinyla/config/l10n/l10n.dart';
+
+import 'package:vinyla/domain/domain.dart';
+
 import 'package:vinyla/presenter/app/route/app_route.dart';
+import 'package:vinyla/presenter/common/common.dart';
 
 import '../bloc/login_cubit.dart';
 
@@ -31,6 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocConsumer<LoginCubit, LoginState>(
         listener: (BuildContext context, LoginState state) {
           if (state is SuccessLogin) _navigateToHome();
+          if (state is FailureTypeLogin) _showFailureResourceDialog(state.type);
+          if (state is FailureMessageLogin) _showFailureDialog(state.message);
         },
         builder: (context, state) => SingleChildScrollView(
           child: Stack(
@@ -136,6 +142,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _pressLogin() {
     _bloc.loginByCredential(_emailController.text, _passwordController.text);
+  }
+
+  void _showFailureResourceDialog(BaseExceptionType type) {
+    final title = context.l10n.common_exception_title;
+    final message = context.getMessage(type);
+    context.showFailureAlertDialog(title, message);
+  }
+
+  void _showFailureDialog(String message) {
+    final title = context.l10n.common_exception_title;
+    context.showFailureAlertDialog(title, message);
   }
 
   void _navigateToHome() {
