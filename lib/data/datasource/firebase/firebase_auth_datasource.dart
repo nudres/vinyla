@@ -24,4 +24,8 @@ class FirebaseAuthDatasource {
         )
         .then((value) => value.user!);
   }
+
+  Future<User?> user() async {
+    return _firebaseAuth.currentUser;
+  }
 }
