@@ -12,6 +12,10 @@ class ProfileRepositoryImpl implements ProfileRepository {
   @override
   Future<ProfileDTO> getProfile(String uid) async {
     var res = await firebaseRealtimeDatasource.get("/user/$uid");
+
+  @override
+  Future<ProfileDTO> createProfile(String uid, ProfileDTO dto) async {
+    var res = await firebaseRealtimeDatasource.post("/user/$uid", dto.toJson());
     return ProfileDTO.fromJson(res);
   }
 }
