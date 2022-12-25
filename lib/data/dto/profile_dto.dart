@@ -14,8 +14,6 @@ class ProfileDTO with _$ProfileDTO {
     required String secondName,
     required String fullName,
     required String bio,
-    required String dateOfCreation,
-    required String dateOfLastVisit,
   }) = _ProfileDTO;
 
   factory ProfileDTO.fromJson(Map<String, Object?> json) => _$ProfileDTOFromJson(json);

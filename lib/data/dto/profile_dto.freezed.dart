@@ -25,8 +25,6 @@ mixin _$ProfileDTO {
   String get secondName => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
   String get bio => throw _privateConstructorUsedError;
-  String get dateOfCreation => throw _privateConstructorUsedError;
-  String get dateOfLastVisit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,9 +43,7 @@ abstract class $ProfileDTOCopyWith<$Res> {
       String firstName,
       String secondName,
       String fullName,
-      String bio,
-      String dateOfCreation,
-      String dateOfLastVisit});
+      String bio});
 }
 
 /// @nodoc
@@ -68,8 +64,6 @@ class _$ProfileDTOCopyWithImpl<$Res, $Val extends ProfileDTO>
     Object? secondName = null,
     Object? fullName = null,
     Object? bio = null,
-    Object? dateOfCreation = null,
-    Object? dateOfLastVisit = null,
   }) {
     return _then(_value.copyWith(
       login: null == login
@@ -92,14 +86,6 @@ class _$ProfileDTOCopyWithImpl<$Res, $Val extends ProfileDTO>
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String,
-      dateOfCreation: null == dateOfCreation
-          ? _value.dateOfCreation
-          : dateOfCreation // ignore: cast_nullable_to_non_nullable
-              as String,
-      dateOfLastVisit: null == dateOfLastVisit
-          ? _value.dateOfLastVisit
-          : dateOfLastVisit // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -117,9 +103,7 @@ abstract class _$$_ProfileDTOCopyWith<$Res>
       String firstName,
       String secondName,
       String fullName,
-      String bio,
-      String dateOfCreation,
-      String dateOfLastVisit});
+      String bio});
 }
 
 /// @nodoc
@@ -138,8 +122,6 @@ class __$$_ProfileDTOCopyWithImpl<$Res>
     Object? secondName = null,
     Object? fullName = null,
     Object? bio = null,
-    Object? dateOfCreation = null,
-    Object? dateOfLastVisit = null,
   }) {
     return _then(_$_ProfileDTO(
       login: null == login
@@ -162,14 +144,6 @@ class __$$_ProfileDTOCopyWithImpl<$Res>
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String,
-      dateOfCreation: null == dateOfCreation
-          ? _value.dateOfCreation
-          : dateOfCreation // ignore: cast_nullable_to_non_nullable
-              as String,
-      dateOfLastVisit: null == dateOfLastVisit
-          ? _value.dateOfLastVisit
-          : dateOfLastVisit // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -182,9 +156,7 @@ class _$_ProfileDTO with DiagnosticableTreeMixin implements _ProfileDTO {
       required this.firstName,
       required this.secondName,
       required this.fullName,
-      required this.bio,
-      required this.dateOfCreation,
-      required this.dateOfLastVisit});
+      required this.bio});
 
   factory _$_ProfileDTO.fromJson(Map<String, dynamic> json) =>
       _$$_ProfileDTOFromJson(json);
@@ -199,14 +171,10 @@ class _$_ProfileDTO with DiagnosticableTreeMixin implements _ProfileDTO {
   final String fullName;
   @override
   final String bio;
-  @override
-  final String dateOfCreation;
-  @override
-  final String dateOfLastVisit;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProfileDTO(login: $login, firstName: $firstName, secondName: $secondName, fullName: $fullName, bio: $bio, dateOfCreation: $dateOfCreation, dateOfLastVisit: $dateOfLastVisit)';
+    return 'ProfileDTO(login: $login, firstName: $firstName, secondName: $secondName, fullName: $fullName, bio: $bio)';
   }
 
   @override
@@ -218,9 +186,7 @@ class _$_ProfileDTO with DiagnosticableTreeMixin implements _ProfileDTO {
       ..add(DiagnosticsProperty('firstName', firstName))
       ..add(DiagnosticsProperty('secondName', secondName))
       ..add(DiagnosticsProperty('fullName', fullName))
-      ..add(DiagnosticsProperty('bio', bio))
-      ..add(DiagnosticsProperty('dateOfCreation', dateOfCreation))
-      ..add(DiagnosticsProperty('dateOfLastVisit', dateOfLastVisit));
+      ..add(DiagnosticsProperty('bio', bio));
   }
 
   @override
@@ -235,17 +201,13 @@ class _$_ProfileDTO with DiagnosticableTreeMixin implements _ProfileDTO {
                 other.secondName == secondName) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
-            (identical(other.bio, bio) || other.bio == bio) &&
-            (identical(other.dateOfCreation, dateOfCreation) ||
-                other.dateOfCreation == dateOfCreation) &&
-            (identical(other.dateOfLastVisit, dateOfLastVisit) ||
-                other.dateOfLastVisit == dateOfLastVisit));
+            (identical(other.bio, bio) || other.bio == bio));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, login, firstName, secondName,
-      fullName, bio, dateOfCreation, dateOfLastVisit);
+  int get hashCode =>
+      Object.hash(runtimeType, login, firstName, secondName, fullName, bio);
 
   @JsonKey(ignore: true)
   @override
@@ -267,9 +229,7 @@ abstract class _ProfileDTO implements ProfileDTO {
       required final String firstName,
       required final String secondName,
       required final String fullName,
-      required final String bio,
-      required final String dateOfCreation,
-      required final String dateOfLastVisit}) = _$_ProfileDTO;
+      required final String bio}) = _$_ProfileDTO;
 
   factory _ProfileDTO.fromJson(Map<String, dynamic> json) =
       _$_ProfileDTO.fromJson;
@@ -284,10 +244,6 @@ abstract class _ProfileDTO implements ProfileDTO {
   String get fullName;
   @override
   String get bio;
-  @override
-  String get dateOfCreation;
-  @override
-  String get dateOfLastVisit;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileDTOCopyWith<_$_ProfileDTO> get copyWith =>

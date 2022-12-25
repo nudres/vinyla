@@ -8,8 +8,6 @@ class ProfileMapper extends Mapper<ProfileDTO, ProfileModel> {
   ProfileDTO mapToDto(ProfileModel model) {
     return ProfileDTO(
       login: model.login,
-      dateOfCreation: model.dateOfCreation,
-      dateOfLastVisit: model.dateOfLastVisit,
       firstName: model.fullName,
       bio: model.bio,
       secondName: model.secondName,
@@ -22,8 +20,6 @@ class ProfileMapper extends Mapper<ProfileDTO, ProfileModel> {
     return ProfileModel(
       login: dto.login,
       bio: dto.bio,
-      dateOfCreation: dto.dateOfCreation,
-      dateOfLastVisit: dto.dateOfLastVisit,
       firstName: dto.firstName,
       secondName: dto.secondName,
       fullName: dto.fullName,
