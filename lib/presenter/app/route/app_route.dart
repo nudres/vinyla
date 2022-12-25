@@ -5,8 +5,11 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:vinyla/domain/domain.dart';
+
 import 'package:vinyla/presenter/app/application.dart';
 import 'package:vinyla/presenter/features/features.dart';
+import 'package:vinyla/presenter/features/home/profile/bloc/profile_cubit.dart';
+import 'package:vinyla/presenter/features/home/profile/view/profile_screen.dart';
 
 class AppRoute {
   static const initial = '/';
@@ -68,8 +71,9 @@ class AppRoute {
           key: state.pageKey,
           child: HomeScreen(
             selectedTab: HomeTab.profile,
-            child: Container(
-              color: Colors.yellow,
+            child: BlocProvider<ProfileCubit>(
+              create: (context) => ProfileCubit(di<GetProfileUseCase>()),
+              child: const ProfileScreen(),
             ),
           ),
         ),
