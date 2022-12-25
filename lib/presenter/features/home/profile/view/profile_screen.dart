@@ -72,12 +72,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 padding: const EdgeInsets.only(left: 8, top: 16, right: 8),
                                 child: Align(
                                   alignment: Alignment.topCenter,
-                                  child: Text(
-                                    state.fullName,
-                                    style: _textTheme.titleLarge?.copyWith(
-                                      letterSpacing: 8,
-                                      fontWeight: FontWeight.w700,
-                                    ),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        state.fullName,
+                                        style: _textTheme.titleLarge?.copyWith(
+                                          letterSpacing: 8,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        state.isOnline ? context.l10n.profile_online : context.l10n.profile_offline,
+                                        style: _textTheme.labelMedium?.copyWith(
+                                          color: state.isOnline ? _colorScheme.surface : _colorScheme.background,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -99,7 +112,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                               ),
                               UrlUserAvatar(
-                                url: state.email.gravatarImageUrl(),
+                                url: state.email.gravatarImageUrl(
+                                  scheme: "https",
+                                  size: 80,
+                                ),
                                 name: state.fullName,
                               ),
                               CircleAvatar(
@@ -114,6 +130,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                         ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8, top: 16, bottom: 16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Date Of creation",
+                              style: _textTheme.titleSmall,
+                            ),
+                            Text(
+                              state.dateOfCreation,
+                              textAlign: TextAlign.center,
+                              style: _textTheme.bodySmall,
+                            ),
+                          ],
+                        )),
+                        Expanded(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Date of last visit",
+                              style: _textTheme.titleSmall,
+                            ),
+                            Text(
+                              state.dateOfLastVisit,
+                              textAlign: TextAlign.center,
+                              style: _textTheme.bodySmall,
+                            ),
+                          ],
+                        ))
                       ],
                     ),
                   ),

@@ -10,7 +10,13 @@ abstract class ProfileState {
 
   String get bio => profileModel?.bio ?? "";
 
-  String get email => profileModel?.email ?? "";
+  String get email => profileModel?.metadata?.email ?? "";
+
+  String get dateOfCreation => profileModel?.metadata?.dateOfCreation ?? "";
+
+  String get dateOfLastVisit => profileModel?.metadata?.dateOfLastVisit ?? "";
+
+  bool get isOnline => profileModel?.metadata?.isOnline ?? false;
 }
 
 class ProfileInitial extends ProfileState {

@@ -29,10 +29,12 @@
   "auth_failure_too_many_login_attempts": "Too many failed attempts, try logging in later",
   "auth_failure_phone_unknown": "An authorization error occurred, please write to support.",
 
+  "profile_online": "Online",
+  "profile_offline": "Offline",
+
   "common_ok": "Ok",
   "common_exception_title": "Ops, something happened",
   "common_unknown_exception": "We are very sorry, but an error occurred, please try again later."
-
 
 }
 
