@@ -31,6 +31,8 @@
 
   "profile_online": "Online",
   "profile_offline": "Offline",
+  "profile_date_of_creation": "Date Of creation",
+  "profile_date_of_last_visit": "Date of last visit",
 
   "common_ok": "Ok",
   "common_exception_title": "Ops, something happened",

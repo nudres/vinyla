@@ -76,6 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     children: [
                                       Text(
                                         state.fullName,
+                                        textAlign: TextAlign.center,
                                         style: _textTheme.titleLarge?.copyWith(
                                           letterSpacing: 8,
                                           fontWeight: FontWeight.w700,
@@ -143,7 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Date Of creation",
+                              context.l10n.profile_date_of_creation,
                               style: _textTheme.titleSmall,
                             ),
                             Text(
@@ -159,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Date of last visit",
+                              context.l10n.profile_date_of_last_visit,
                               style: _textTheme.titleSmall,
                             ),
                             Text(
@@ -173,7 +174,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8, right: 8, top: 16, bottom: 16),
+                    padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
                     child: Text(
                       state.bio,
                       style: _textTheme.bodyMedium,
