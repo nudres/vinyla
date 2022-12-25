@@ -9,3 +9,9 @@ export 'auth/is_user_authorized/is_user_authorized_user_impl.dart';
 
 export 'auth/get_authorized_user/get_authorized_user.dart';
 export 'auth/get_authorized_user/get_authorized_user_impl.dart';
+
+export 'auth/login_phone/login_phone.dart';
+export 'auth/login_phone/login_phone_impl.dart';
+
+export 'auth/login_phone/verify_phone.dart';
+export 'auth/login_phone/verify_phone_impl.dart';
