@@ -23,7 +23,6 @@ mixin _$ProfileDTO {
   String get login => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get secondName => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
   String get bio => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,12 +37,7 @@ abstract class $ProfileDTOCopyWith<$Res> {
           ProfileDTO value, $Res Function(ProfileDTO) then) =
       _$ProfileDTOCopyWithImpl<$Res, ProfileDTO>;
   @useResult
-  $Res call(
-      {String login,
-      String firstName,
-      String secondName,
-      String fullName,
-      String bio});
+  $Res call({String login, String firstName, String secondName, String bio});
 }
 
 /// @nodoc
@@ -62,7 +56,6 @@ class _$ProfileDTOCopyWithImpl<$Res, $Val extends ProfileDTO>
     Object? login = null,
     Object? firstName = null,
     Object? secondName = null,
-    Object? fullName = null,
     Object? bio = null,
   }) {
     return _then(_value.copyWith(
@@ -77,10 +70,6 @@ class _$ProfileDTOCopyWithImpl<$Res, $Val extends ProfileDTO>
       secondName: null == secondName
           ? _value.secondName
           : secondName // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       bio: null == bio
           ? _value.bio
@@ -98,12 +87,7 @@ abstract class _$$_ProfileDTOCopyWith<$Res>
       __$$_ProfileDTOCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String login,
-      String firstName,
-      String secondName,
-      String fullName,
-      String bio});
+  $Res call({String login, String firstName, String secondName, String bio});
 }
 
 /// @nodoc
@@ -120,7 +104,6 @@ class __$$_ProfileDTOCopyWithImpl<$Res>
     Object? login = null,
     Object? firstName = null,
     Object? secondName = null,
-    Object? fullName = null,
     Object? bio = null,
   }) {
     return _then(_$_ProfileDTO(
@@ -135,10 +118,6 @@ class __$$_ProfileDTOCopyWithImpl<$Res>
       secondName: null == secondName
           ? _value.secondName
           : secondName // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       bio: null == bio
           ? _value.bio
@@ -155,7 +134,6 @@ class _$_ProfileDTO with DiagnosticableTreeMixin implements _ProfileDTO {
       {required this.login,
       required this.firstName,
       required this.secondName,
-      required this.fullName,
       required this.bio});
 
   factory _$_ProfileDTO.fromJson(Map<String, dynamic> json) =>
@@ -168,13 +146,11 @@ class _$_ProfileDTO with DiagnosticableTreeMixin implements _ProfileDTO {
   @override
   final String secondName;
   @override
-  final String fullName;
-  @override
   final String bio;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProfileDTO(login: $login, firstName: $firstName, secondName: $secondName, fullName: $fullName, bio: $bio)';
+    return 'ProfileDTO(login: $login, firstName: $firstName, secondName: $secondName, bio: $bio)';
   }
 
   @override
@@ -185,7 +161,6 @@ class _$_ProfileDTO with DiagnosticableTreeMixin implements _ProfileDTO {
       ..add(DiagnosticsProperty('login', login))
       ..add(DiagnosticsProperty('firstName', firstName))
       ..add(DiagnosticsProperty('secondName', secondName))
-      ..add(DiagnosticsProperty('fullName', fullName))
       ..add(DiagnosticsProperty('bio', bio));
   }
 
@@ -199,15 +174,13 @@ class _$_ProfileDTO with DiagnosticableTreeMixin implements _ProfileDTO {
                 other.firstName == firstName) &&
             (identical(other.secondName, secondName) ||
                 other.secondName == secondName) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
             (identical(other.bio, bio) || other.bio == bio));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, login, firstName, secondName, fullName, bio);
+      Object.hash(runtimeType, login, firstName, secondName, bio);
 
   @JsonKey(ignore: true)
   @override
@@ -228,7 +201,6 @@ abstract class _ProfileDTO implements ProfileDTO {
       {required final String login,
       required final String firstName,
       required final String secondName,
-      required final String fullName,
       required final String bio}) = _$_ProfileDTO;
 
   factory _ProfileDTO.fromJson(Map<String, dynamic> json) =
@@ -240,8 +212,6 @@ abstract class _ProfileDTO implements ProfileDTO {
   String get firstName;
   @override
   String get secondName;
-  @override
-  String get fullName;
   @override
   String get bio;
   @override

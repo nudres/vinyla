@@ -11,7 +11,6 @@ class ProfileMapper extends Mapper<ProfileDTO, ProfileModel> {
       firstName: model.fullName,
       bio: model.bio,
       secondName: model.secondName,
-      fullName: model.fullName,
     );
   }
 
@@ -22,7 +21,6 @@ class ProfileMapper extends Mapper<ProfileDTO, ProfileModel> {
       bio: dto.bio,
       firstName: dto.firstName,
       secondName: dto.secondName,
-      fullName: dto.fullName,
     );
   }
 }

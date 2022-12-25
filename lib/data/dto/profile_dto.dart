@@ -12,7 +12,6 @@ class ProfileDTO with _$ProfileDTO {
     required String login,
     required String firstName,
     required String secondName,
-    required String fullName,
     required String bio,
   }) = _ProfileDTO;
 

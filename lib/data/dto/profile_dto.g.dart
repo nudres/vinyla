@@ -11,7 +11,6 @@ _$_ProfileDTO _$$_ProfileDTOFromJson(Map<String, dynamic> json) =>
       login: json['login'] as String,
       firstName: json['firstName'] as String,
       secondName: json['secondName'] as String,
-      fullName: json['fullName'] as String,
       bio: json['bio'] as String,
     );
 
@@ -20,6 +19,5 @@ Map<String, dynamic> _$$_ProfileDTOToJson(_$_ProfileDTO instance) =>
       'login': instance.login,
       'firstName': instance.firstName,
       'secondName': instance.secondName,
-      'fullName': instance.fullName,
       'bio': instance.bio,
     };

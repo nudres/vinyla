@@ -1,3 +1,5 @@
+import 'package:faker/faker.dart';
+
 import '../entity.dart';
 
 class ProfileModel {
@@ -5,7 +7,6 @@ class ProfileModel {
     required this.login,
     required this.firstName,
     required this.secondName,
-    required this.fullName,
     required this.bio,
     this.metadata,
   });
@@ -13,9 +14,10 @@ class ProfileModel {
   final String login;
   final String firstName;
   final String secondName;
-  final String fullName;
   final String bio;
   final ProfileMetadataModel? metadata;
+
+  String get fullName => "$firstName $secondName";
 
   ProfileModel copyWith({
     String? login,
@@ -29,7 +31,6 @@ class ProfileModel {
       login: login ?? this.login,
       firstName: firstName ?? this.firstName,
       secondName: secondName ?? this.secondName,
-      fullName: fullName ?? this.fullName,
       bio: bio ?? this.bio,
       metadata: metadata ?? this.metadata,
     );
