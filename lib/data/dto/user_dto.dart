@@ -12,6 +12,8 @@ class UserDTO with _$UserDTO {
     required String uuid,
     required String? email,
     required String? phone,
+    required DateTime? dateOfCreation,
+    required DateTime? dateOfLastVisit,
   }) = _UserDTO;
 
   factory UserDTO.fromJson(Map<String, Object?> json) => _$UserDTOFromJson(json);

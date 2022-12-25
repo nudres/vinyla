@@ -7,18 +7,20 @@ class UserMapper extends Mapper<UserDTO, UserModel> {
   @override
   UserDTO mapToDto(UserModel model) {
     return UserDTO(
-      uuid: model.uuid,
-      email: model.email,
-      phone: model.phone,
-    );
+        uuid: model.uuid,
+        email: model.email,
+        phone: model.phone,
+        dateOfCreation: model.dateOfCreation,
+        dateOfLastVisit: model.dateOfLastVisit);
   }
 
   @override
   UserModel mapToModel(UserDTO dto) {
     return UserModel(
-      uuid: dto.uuid,
-      email: dto.email,
-      phone: dto.phone,
-    );
+        uuid: dto.uuid,
+        email: dto.email,
+        phone: dto.phone,
+        dateOfCreation: dto.dateOfCreation,
+        dateOfLastVisit: dto.dateOfLastVisit);
   }
 }

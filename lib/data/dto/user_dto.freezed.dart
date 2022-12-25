@@ -23,6 +23,8 @@ mixin _$UserDTO {
   String get uuid => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
+  DateTime? get dateOfCreation => throw _privateConstructorUsedError;
+  DateTime? get dateOfLastVisit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,12 @@ abstract class $UserDTOCopyWith<$Res> {
   factory $UserDTOCopyWith(UserDTO value, $Res Function(UserDTO) then) =
       _$UserDTOCopyWithImpl<$Res, UserDTO>;
   @useResult
-  $Res call({String uuid, String? email, String? phone});
+  $Res call(
+      {String uuid,
+      String? email,
+      String? phone,
+      DateTime? dateOfCreation,
+      DateTime? dateOfLastVisit});
 }
 
 /// @nodoc
@@ -53,6 +60,8 @@ class _$UserDTOCopyWithImpl<$Res, $Val extends UserDTO>
     Object? uuid = null,
     Object? email = freezed,
     Object? phone = freezed,
+    Object? dateOfCreation = freezed,
+    Object? dateOfLastVisit = freezed,
   }) {
     return _then(_value.copyWith(
       uuid: null == uuid
@@ -67,6 +76,14 @@ class _$UserDTOCopyWithImpl<$Res, $Val extends UserDTO>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
+      dateOfCreation: freezed == dateOfCreation
+          ? _value.dateOfCreation
+          : dateOfCreation // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      dateOfLastVisit: freezed == dateOfLastVisit
+          ? _value.dateOfLastVisit
+          : dateOfLastVisit // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -78,7 +95,12 @@ abstract class _$$_UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
       __$$_UserDTOCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uuid, String? email, String? phone});
+  $Res call(
+      {String uuid,
+      String? email,
+      String? phone,
+      DateTime? dateOfCreation,
+      DateTime? dateOfLastVisit});
 }
 
 /// @nodoc
@@ -94,6 +116,8 @@ class __$$_UserDTOCopyWithImpl<$Res>
     Object? uuid = null,
     Object? email = freezed,
     Object? phone = freezed,
+    Object? dateOfCreation = freezed,
+    Object? dateOfLastVisit = freezed,
   }) {
     return _then(_$_UserDTO(
       uuid: null == uuid
@@ -108,6 +132,14 @@ class __$$_UserDTOCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
+      dateOfCreation: freezed == dateOfCreation
+          ? _value.dateOfCreation
+          : dateOfCreation // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      dateOfLastVisit: freezed == dateOfLastVisit
+          ? _value.dateOfLastVisit
+          : dateOfLastVisit // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -116,7 +148,11 @@ class __$$_UserDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserDTO with DiagnosticableTreeMixin implements _UserDTO {
   const _$_UserDTO(
-      {required this.uuid, required this.email, required this.phone});
+      {required this.uuid,
+      required this.email,
+      required this.phone,
+      required this.dateOfCreation,
+      required this.dateOfLastVisit});
 
   factory _$_UserDTO.fromJson(Map<String, dynamic> json) =>
       _$$_UserDTOFromJson(json);
@@ -127,10 +163,14 @@ class _$_UserDTO with DiagnosticableTreeMixin implements _UserDTO {
   final String? email;
   @override
   final String? phone;
+  @override
+  final DateTime? dateOfCreation;
+  @override
+  final DateTime? dateOfLastVisit;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserDTO(uuid: $uuid, email: $email, phone: $phone)';
+    return 'UserDTO(uuid: $uuid, email: $email, phone: $phone, dateOfCreation: $dateOfCreation, dateOfLastVisit: $dateOfLastVisit)';
   }
 
   @override
@@ -140,7 +180,9 @@ class _$_UserDTO with DiagnosticableTreeMixin implements _UserDTO {
       ..add(DiagnosticsProperty('type', 'UserDTO'))
       ..add(DiagnosticsProperty('uuid', uuid))
       ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('phone', phone));
+      ..add(DiagnosticsProperty('phone', phone))
+      ..add(DiagnosticsProperty('dateOfCreation', dateOfCreation))
+      ..add(DiagnosticsProperty('dateOfLastVisit', dateOfLastVisit));
   }
 
   @override
@@ -150,12 +192,17 @@ class _$_UserDTO with DiagnosticableTreeMixin implements _UserDTO {
             other is _$_UserDTO &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.phone, phone) || other.phone == phone));
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.dateOfCreation, dateOfCreation) ||
+                other.dateOfCreation == dateOfCreation) &&
+            (identical(other.dateOfLastVisit, dateOfLastVisit) ||
+                other.dateOfLastVisit == dateOfLastVisit));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uuid, email, phone);
+  int get hashCode => Object.hash(
+      runtimeType, uuid, email, phone, dateOfCreation, dateOfLastVisit);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +222,9 @@ abstract class _UserDTO implements UserDTO {
   const factory _UserDTO(
       {required final String uuid,
       required final String? email,
-      required final String? phone}) = _$_UserDTO;
+      required final String? phone,
+      required final DateTime? dateOfCreation,
+      required final DateTime? dateOfLastVisit}) = _$_UserDTO;
 
   factory _UserDTO.fromJson(Map<String, dynamic> json) = _$_UserDTO.fromJson;
 
@@ -185,6 +234,10 @@ abstract class _UserDTO implements UserDTO {
   String? get email;
   @override
   String? get phone;
+  @override
+  DateTime? get dateOfCreation;
+  @override
+  DateTime? get dateOfLastVisit;
   @override
   @JsonKey(ignore: true)
   _$$_UserDTOCopyWith<_$_UserDTO> get copyWith =>
