@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import 'package:vinyla/config/di/di.dart';
 import 'package:vinyla/data/data.dart';
 import 'package:vinyla/domain/domain.dart';
@@ -22,10 +24,34 @@ class GetProfileUseCaseImpl implements GetProfileUseCase {
     if (isAuthorized) {
       final user = await _getAuthorizedUserUseCase.execute();
       final dto = await _profileRepository.getProfile(user.uuid);
-      return _mapper.mapToModel(dto).copyWith(email: user.email);
+      return _mapper.mapToModel(dto).copyWith(metadata: _prepareMetadata(user));
     } else {
       // TODO: ADD CUSTOM AUTH EXCEPTION
       throw Exception("User is not authorized");
+    }
+  }
+
+  ProfileMetadataModel _prepareMetadata(UserModel userDTO) {
+    final dateOfCreation = DateFormat.yMd().add_jm().format(userDTO.dateOfCreation!);
+    final dateOfLastVisit = DateFormat.yMd().add_jm().format(userDTO.dateOfLastVisit!);
+
+    return ProfileMetadataModel(
+        dateOfCreation: dateOfCreation,
+        dateOfLastVisit: dateOfLastVisit,
+        email: userDTO.email,
+        phone: userDTO.phone,
+        isOnline: isOnline(userDTO.dateOfLastVisit));
+  }
+
+  bool isOnline(DateTime? dateTime) {
+    const onlineRange = Duration(minutes: 5);
+    final topOnlineLimit = DateTime.now().add(onlineRange);
+    final bottomOnlineLimit = DateTime.now().subtract(onlineRange);
+
+    if (dateTime != null) {
+      return bottomOnlineLimit.isBefore(dateTime) && topOnlineLimit.isAfter(dateTime);
+    } else {
+      return false;
     }
   }
 }
