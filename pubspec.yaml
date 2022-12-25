@@ -32,6 +32,7 @@ dependencies:
   adaptive_navigation: ^0.0.7
   google_fonts: ^3.0.1
   cupertino_icons: ^1.0.2
+  gravatar_utils: ^1.0.0
 
   # Navigation
   go_router: ^5.1.5
