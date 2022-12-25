@@ -1,3 +1,5 @@
+import '../entity.dart';
+
 class ProfileModel {
   ProfileModel({
     required this.login,
@@ -5,9 +7,7 @@ class ProfileModel {
     required this.secondName,
     required this.fullName,
     required this.bio,
-    required this.dateOfCreation,
-    required this.dateOfLastVisit,
-    this.email,
+    this.metadata,
   });
 
   final String login;
@@ -15,9 +15,7 @@ class ProfileModel {
   final String secondName;
   final String fullName;
   final String bio;
-  final String dateOfCreation;
-  final String dateOfLastVisit;
-  final String? email;
+  final ProfileMetadataModel? metadata;
 
   ProfileModel copyWith({
     String? login,
@@ -25,9 +23,7 @@ class ProfileModel {
     String? secondName,
     String? fullName,
     String? bio,
-    String? dateOfCreation,
-    String? dateOfLastVisit,
-    String? email,
+    ProfileMetadataModel? metadata,
   }) {
     return ProfileModel(
       login: login ?? this.login,
@@ -35,9 +31,7 @@ class ProfileModel {
       secondName: secondName ?? this.secondName,
       fullName: fullName ?? this.fullName,
       bio: bio ?? this.bio,
-      dateOfCreation: dateOfCreation ?? this.dateOfCreation,
-      dateOfLastVisit: dateOfLastVisit ?? this.dateOfLastVisit,
-      email: email ?? this.email,
+      metadata: metadata ?? this.metadata,
     );
   }
 }
