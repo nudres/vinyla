@@ -6,3 +6,6 @@ export 'profile/get_profile/get_profile_use_case_impl.dart';
 
 export 'auth/is_user_authorized/is_user_authorized_user.dart';
 export 'auth/is_user_authorized/is_user_authorized_user_impl.dart';
+
+export 'auth/get_authorized_user/get_authorized_user.dart';
+export 'auth/get_authorized_user/get_authorized_user_impl.dart';
