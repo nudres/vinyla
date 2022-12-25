@@ -22,7 +22,7 @@ class GetProfileUseCaseImpl implements GetProfileUseCase {
     if (isAuthorized) {
       final user = await _getAuthorizedUserUseCase.execute();
       final dto = await _profileRepository.getProfile(user.uuid);
-      return _mapper.mapToModel(dto);
+      return _mapper.mapToModel(dto).copyWith(email: user.email);
     } else {
       // TODO: ADD CUSTOM AUTH EXCEPTION
       throw Exception("User is not authorized");
