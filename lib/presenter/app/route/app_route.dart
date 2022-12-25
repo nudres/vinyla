@@ -33,7 +33,11 @@ class AppRoute {
         name: authorization,
         path: '/$_loginPathPart',
         builder: (_, __) => BlocProvider<LoginCubit>(
-          create: (context) => LoginCubit(di<LoginCredentialUseCase>()),
+          create: (context) => LoginCubit(
+            di<LoginCredentialUseCase>(),
+            di<LoginPhoneUseCase>(),
+            di<VerifyPhoneUseCase>(),
+          ),
           child: const LoginScreen(),
         ),
       ),

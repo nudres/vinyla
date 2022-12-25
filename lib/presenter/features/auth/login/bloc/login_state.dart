@@ -1,20 +1,51 @@
 part of 'login_cubit.dart';
 
+enum PhoneStep {
+  phone,
+  verify,
+}
+
+enum AuthType {
+  phone,
+  credential,
+}
+
 @immutable
-abstract class LoginState {}
+class LoginState {
+  final AuthType authType;
+  final PhoneStep phoneStep;
 
-class LoginInitial extends LoginState {}
+  const LoginState({
+    this.authType = AuthType.phone,
+    this.phoneStep = PhoneStep.phone,
+  });
 
-class SuccessLogin extends LoginState {}
+  LoginState copyWith({
+    AuthType? authType,
+    PhoneStep? phoneStep,
+  }) {
+    return LoginState(
+      authType: authType ?? this.authType,
+      phoneStep: phoneStep ?? this.phoneStep,
+    );
+  }
+}
 
-class FailureTypeLogin extends LoginState {
-  FailureTypeLogin(this.type);
-
-  final BaseExceptionType type;
+class AuthorizedState extends LoginState {
+  const AuthorizedState({
+    super.authType = AuthType.phone,
+    super.phoneStep = PhoneStep.phone,
+  });
 }
 
 class FailureMessageLogin extends LoginState {
-  FailureMessageLogin(this.message);
+  const FailureMessageLogin(
+    this.type, {
+    this.message,
+    super.authType = AuthType.phone,
+    super.phoneStep = PhoneStep.phone,
+  });
 
-  final String message;
+  final String? message;
+  final BaseExceptionType? type;
 }
