@@ -50,6 +50,8 @@ dependencies:
   # Helpers
   equatable: ^2.0.5
   meta: ^1.8.0
+  faker: ^2.1.0
+
 
 flutter:
   uses-material-design: true
