@@ -15,7 +15,7 @@ import '../../data/datasource/config/firebase_exception_keys.dart' as _i7;
 import '../../data/datasource/config/http_config.dart' as _i10;
 import '../../data/datasource/datasource.dart' as _i5;
 import '../../data/datasource/firebase/firebase_auth_datasource.dart' as _i18;
-import '../../data/datasource/firebase/firebase_realtime_datasource.dart'
+import '../../data/datasource/firebase/firebase_database_datasource.dart'
     as _i9;
 import '../../data/repository/implementation/auth_repository_impl.dart' as _i4;
 import '../../data/repository/implementation/profile_repository_impl.dart'
@@ -54,8 +54,8 @@ _i1.GetIt $initGetIt(
   gh.singleton<_i6.FirebaseAuth>(registerModule.auth());
   gh.singleton<_i7.FirebaseExceptionKeys>(_i7.FirebaseExceptionKeys());
   gh.singleton<_i8.FirebaseFirestore>(registerModule.database());
-  gh.singleton<_i9.FirebaseRealtimeDatasource>(
-      _i9.FirebaseRealtimeDatasource(get<_i8.FirebaseFirestore>()));
+  gh.singleton<_i9.FirebaseDatabaseDatasource>(
+      _i9.FirebaseDatabaseDatasource(get<_i8.FirebaseFirestore>()));
   gh.singleton<_i10.HttpConfig>(_i10.HttpConfig());
   gh.factory<_i11.IsUserAuthorizedUserUseCase>(
       () => _i12.IsUserAuthorizedUserUseCaseImpl(get<_i11.AuthRepository>()));
@@ -64,7 +64,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i11.Mapper<_i13.ProfileDTO, _i11.ProfileModel>>(
       () => _i15.ProfileMapper());
   gh.factory<_i11.ProfileRepository>(
-      () => _i16.ProfileRepositoryImpl(get<_i5.FirebaseRealtimeDatasource>()));
+      () => _i16.ProfileRepositoryImpl(get<_i5.FirebaseDatabaseDatasource>()));
   gh.factory<_i11.VerifyPhoneUseCase>(() => _i17.VerifyPhoneUseCaseImpl(
         get<_i11.AuthRepository>(),
         get<_i11.Mapper<_i13.UserDTO, _i11.UserModel>>(),

@@ -5,7 +5,7 @@ import 'package:vinyla/domain/domain.dart';
 
 @Injectable(as: ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {
-  final FirebaseRealtimeDatasource firebaseRealtimeDatasource;
+  final FirebaseDatabaseDatasource firebaseRealtimeDatasource;
 
   ProfileRepositoryImpl(this.firebaseRealtimeDatasource);
 
