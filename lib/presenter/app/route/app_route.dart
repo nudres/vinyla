@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -10,6 +8,7 @@ import 'package:vinyla/presenter/app/application.dart';
 import 'package:vinyla/presenter/features/features.dart';
 import 'package:vinyla/presenter/features/home/profile/bloc/profile_cubit.dart';
 import 'package:vinyla/presenter/features/home/profile/view/profile_screen.dart';
+import 'package:vinyla/presenter/features/home/vinyl/vinyl_screen.dart';
 
 class AppRoute {
   static const initial = '/';
@@ -43,11 +42,9 @@ class AppRoute {
         path: '/$_vinylPathPart',
         pageBuilder: (_, GoRouterState state) => FadeTransitionPage(
           key: state.pageKey,
-          child: HomeScreen(
+          child: const HomeScreen(
             selectedTab: HomeTab.vinyls,
-            child: Container(
-              color: Colors.red,
-            ),
+            child: VinylScreen(),
           ),
         ),
       ),
@@ -56,11 +53,9 @@ class AppRoute {
         path: '/$_libraryPathPart',
         pageBuilder: (_, GoRouterState state) => FadeTransitionPage(
           key: state.pageKey,
-          child: HomeScreen(
+          child: const HomeScreen(
             selectedTab: HomeTab.library,
-            child: Container(
-              color: Colors.green,
-            ),
+            child: LibraryScreen(),
           ),
         ),
       ),
