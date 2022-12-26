@@ -7,5 +7,7 @@ abstract class AuthRepository {
 
   Future<UserDTO> loginByCredential(String email, String password);
 
+  Future registerFCMToken(String uuid);
+
   Future<UserDTO?> getAuthorizedUser();
 }
