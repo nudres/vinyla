@@ -6,25 +6,31 @@ import 'package:vinyla/domain/domain.dart';
 
 @Injectable(as: LoginCredentialUseCase)
 class LoginCredentialUseCaseImpl implements LoginCredentialUseCase {
-  LoginCredentialUseCaseImpl(this.authRepository, this.mapper);
+  LoginCredentialUseCaseImpl(
+    this._authRepository,
+    this._registerNotificationUseCase,
+    this._mapper,
+    this._firebaseExceptionKeys,
+  );
 
-  final AuthRepository authRepository;
-  final Mapper<UserDTO, UserModel> mapper;
-
-  final _firebaseAuthTimeoutFailureKey = "firebase_auth/network-request-failed";
+  final AuthRepository _authRepository;
+  final Mapper<UserDTO, UserModel> _mapper;
+  final RegisterNotificationUseCase _registerNotificationUseCase;
+  final FirebaseExceptionKeys _firebaseExceptionKeys;
 
   @override
   Future<UserModel> execute(String email, String password) async {
     try {
-      final dto = await authRepository.loginByCredential(email, password);
-      return mapper.mapToModel(dto);
+      final dto = await _authRepository.loginByCredential(email, password);
+      await _registerNotificationUseCase.execute(dto.uuid);
+      return _mapper.mapToModel(dto);
     } on TimeoutException catch (_) {
       throw BaseException(type: BaseExceptionType.authTimeoutConnection);
     } catch (e) {
-      if (e.toString().contains(_firebaseAuthTimeoutFailureKey)) {
+      if (e.toString().contains(_firebaseExceptionKeys.firebaseAuthTimeoutFailureKey)) {
         throw BaseException(type: BaseExceptionType.authTimeoutConnection);
       } else {
-        rethrow;
+        throw BaseException(message: e.toString());
       }
     }
   }

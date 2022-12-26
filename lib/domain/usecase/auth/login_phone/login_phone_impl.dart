@@ -12,6 +12,7 @@ import 'package:vinyla/domain/domain.dart';
 class LoginPhoneUseCaseImpl implements LoginPhoneUseCase {
   LoginPhoneUseCaseImpl(
     this._authRepository,
+    this._registerNotificationUseCase,
     this._mapper,
     this._firebaseExceptionKeys,
   );
@@ -19,6 +20,7 @@ class LoginPhoneUseCaseImpl implements LoginPhoneUseCase {
   final AuthRepository _authRepository;
   final Mapper<UserDTO, UserModel> _mapper;
   final FirebaseExceptionKeys _firebaseExceptionKeys;
+  final RegisterNotificationUseCase _registerNotificationUseCase;
 
   @override
   Future execute(
@@ -28,8 +30,15 @@ class LoginPhoneUseCaseImpl implements LoginPhoneUseCase {
   }) async {
     try {
       final result = await _authRepository.loginByPhone(phone);
-      if (result.user != null) return authorized(_mapper.mapToModel(result.user!));
-      if (result.verifyId != null) return verifying(result.verifyId!);
+
+      if (result.user != null) {
+        await _registerNotificationUseCase.execute(result.user!.uuid);
+        return authorized(_mapper.mapToModel(result.user!));
+      }
+
+      if (result.verifyId != null) {
+        return verifying(result.verifyId!);
+      }
       throw BaseException(type: BaseExceptionType.authPhoneUnknownException);
     } on TimeoutException catch (_) {
       throw BaseException(type: BaseExceptionType.authTimeoutConnection);

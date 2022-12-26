@@ -15,3 +15,6 @@ export 'auth/login_phone/login_phone_impl.dart';
 
 export 'auth/login_phone/verify_phone.dart';
 export 'auth/login_phone/verify_phone_impl.dart';
+
+export 'auth/register_notification/register_notification_use_case.dart';
+export 'auth/register_notification/register_notification_use_case_impl.dart';
