@@ -20,4 +20,9 @@ class FirebaseDatabaseDatasource {
     await _database.doc(path).set(data);
     return data;
   }
+
+  Future<Map<String, dynamic>> patch(String path, Map<String, dynamic> data) async {
+    await _database.doc(path).update(data);
+    return data;
+  }
 }
